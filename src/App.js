@@ -1,15 +1,17 @@
 import React, { Fragment } from "react";
-import { createStore } from "redux";
+import { createStore, applyMiddleware, compose } from "redux";
 import { Provider } from "react-redux";
-import combineReducer from "./store/config-store";
+import reducers from "./reducers/combineReducer";
 import "./App.css";
 import ListTodos from "./components/ListTodos";
 
 const App = () => {
-  // const [demos, setDemos] = useState([]);
+  const composeEnhancers =
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+  const store = createStore(reducers, composeEnhancers(applyMiddleware()));
   return (
     <Fragment>
-      <Provider store={createStore(combineReducer)}>
+      <Provider store={store}>
         <ListTodos />
       </Provider>
     </Fragment>

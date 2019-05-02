@@ -15,7 +15,7 @@ const NewTodo = ({ dispatch, todos }) => {
   return (
     <div>
       <input type="text" value={todo} onChange={onChange} />
-      <button className="btn btn-primary" onClick={onClick}>
+      <button className="btn btn-primary" onClick={onClick} disabled={!todo}>
         Add Todo
       </button>
     </div>
